@@ -1,4 +1,4 @@
-package java8.data;
+package examples.data;
 
 public class Employee {
 	private Integer empNumber;

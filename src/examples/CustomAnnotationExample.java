@@ -1,8 +1,8 @@
-package java8;
+package examples;
 
-import java8.annoatation.ClassCall;
-import java8.annoatation.EmailFormat;
-import java8.annoatation.MethodCall;
+import examples.annoatation.ClassCall;
+import examples.annoatation.EmailFormat;
+import examples.annoatation.MethodCall;
 
 @ClassCall
 public class CustomAnnotationExample {

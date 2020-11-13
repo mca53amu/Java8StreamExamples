@@ -1,12 +1,12 @@
-package java8;
+package examples;
 
 import static java.util.stream.Collectors.groupingBy;
 
 import java.util.List;
 import java.util.Map;
 
-import java8.data.Employee;
-import java8.data.EmployeeData;
+import examples.data.Employee;
+import examples.data.EmployeeData;
 
 public class StreamListToGroupByExample {
 	public static void main(String a[]) {

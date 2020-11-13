@@ -1,13 +1,13 @@
-package java8.annoatation;
+package examples.annoatation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ ElementType.METHOD })
+@TextFormat(EmailFormat.class)
+@Target({ ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MethodCall {
-	String value() default "MethodCall";
+public @interface EmailFormat {
 
 }

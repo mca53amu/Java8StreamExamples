@@ -1,4 +1,4 @@
-package java8.data;
+package examples.data;
 
 import java.util.ArrayList;
 import java.util.List;

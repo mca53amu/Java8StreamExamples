@@ -1,11 +1,11 @@
-package java8;
+package examples;
 
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
 
-import java8.data.Employee;
-import java8.data.EmployeeData;
+import examples.data.Employee;
+import examples.data.EmployeeData;
 
 public class StreamFilterExample {
 	
