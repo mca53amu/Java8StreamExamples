@@ -12,7 +12,6 @@ public class ReverseOfStringExamples {
 			charArray[i] = charArray[charArray.length - 1 - i];
 			charArray[charArray.length - 1 - i] = temp;
 		}
-
 		System.out.println(charArray);
 
 	}
