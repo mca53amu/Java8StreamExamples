@@ -5,7 +5,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Account {
 	private Long balance;
 	private String name;
-
 	public ReentrantLock lock=new ReentrantLock();
 	
 	public Account(String name, Long balance) {

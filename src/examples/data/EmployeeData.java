@@ -8,7 +8,7 @@ public class EmployeeData {
 	private static int count;
 	static {
 
-		arrayList.add(createEmpObject("Mohammad", 200L, "ONE"));
+		arrayList.add(createEmpObject("Mohammad", 1200L, "ONE"));
 		arrayList.add(createEmpObject("Mohammad", 300L, "ONE"));
 		arrayList.add(createEmpObject("Mohammad", 400L, "ONE"));
 		arrayList.add(createEmpObject("Mohammad", 500L, "TWO"));
