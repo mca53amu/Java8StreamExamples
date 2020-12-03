@@ -24,9 +24,8 @@ public class EmployeeData {
 	}
 
 	private static Employee createEmpObject(String name, Long sal, String type) {
-		Employee e = new Employee();
+		Employee e = new Employee(name);
 		e.setEmpNumber(count++);
-		e.setName(name);
 		e.setSal(sal);
 		e.setType(type);
 		return e;

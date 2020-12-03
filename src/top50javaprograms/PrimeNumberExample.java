@@ -4,10 +4,9 @@ public class PrimeNumberExample {
 
 	public static void main(String[] args) {
 
-		int n = 563;
+		int n = 871;
 		boolean result = checkPrimeNumber(n);
 		System.out.println(result);
-
 	}
 
 	private static boolean checkPrimeNumber(int n) {
