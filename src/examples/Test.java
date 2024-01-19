@@ -1,5 +1,8 @@
 package examples;
 
+import examples.data.Employee;
+import examples.data.Student;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -7,9 +10,6 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import examples.data.Employee;
-import examples.data.Student;
 
 public class Test {
 
@@ -52,7 +52,7 @@ public class Test {
 		
 		List<String> asList2 = Arrays.asList("a","a","s");
 		List<Student> collect2 = asList2.stream().map(aa->new Student()).collect(Collectors.toList());
-		Map<String, Student> collect3 = collect2.stream().collect(Collectors.toSet()).stream().collect(Collectors.toMap(Student::getName,Function.identity()));
+		Map<String, Student> collect3 = collect2.stream().collect(Collectors.toSet()).stream().collect(Collectors.toMap(Student::getName, Function.identity()));
 		System.out.println(collect3);
 		
 		
