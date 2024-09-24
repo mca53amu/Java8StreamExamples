@@ -1,0 +1,124 @@
+package examples;
+
+import examples.data.Employee;
+import examples.data.EmployeeData;
+import examples.data.Student;
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class StreamsExampleGroupbyCountingMap {
+    public static void main(String[] args) {
+        List<Employee> empList = EmployeeData.getEmpList();
+        Set<Employee> collect = Stream.concat(empList.stream(), empList.stream()).collect(Collectors.toCollection(TreeSet::new));
+        System.out.println(collect);
+        Map<String, TreeSet<Employee>> collect1 = empList.stream().collect(Collectors.groupingBy(Employee::getType, Collectors.toCollection(TreeSet::new)));
+        System.out.println(collect1);
+        Map<Employee, Long> collect2 = empList.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(collect2);
+        List<Integer> integers = List.of(1, 2, 3, 2, 1, 1, 1, 4);
+        Map<Integer, Long> collect3 = integers.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(collect3);
+        Set<Integer> collect4 = integers.stream().filter(a -> Collections.frequency(integers, a) > 1).collect(Collectors.toSet());
+        System.out.println(collect4);
+
+    }
+}
+
+class StreamListToTreeSet {
+    public static void main(String[] args) {
+        List<Integer> integers = List.of(11, 12, 3, 4);
+        List<Integer> integers1 = List.of(4, 5, 16, 7, 8, 9);
+        List<Integer> collect = Stream.concat(integers.stream(), integers1.stream()).collect(Collectors.toCollection(()->new ArrayList<>()));
+        System.out.println(collect);
+        List<List<Integer>> listOfLists = List.of(integers1, integers);
+        System.out.println(listOfLists);
+        Stream<Integer> flatMap = listOfLists.stream().flatMap(a -> a.stream());
+        // System.out.println(flatMap.collect(Collectors.toList()));
+        Map<Integer, Long> collect1 = flatMap.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(collect1);
+    }
+}
+
+
+class Test {
+
+    public static void main(String[] args) {
+
+        Optional<Employee> empty = Optional.empty();
+        Employee orElseGet = empty.orElseGet(()->new Employee());
+        System.out.println(orElseGet);
+
+
+        System.out.println("Hi");
+
+        if(empty.isPresent()) {
+            System.out.println("hello");
+        }
+
+        Stream<Integer> takeWhile = Stream.of(1,2,3,4,5,6,7,8,9,10).takeWhile(i -> i < 5 );
+
+        takeWhile.forEach(data->System.out.println(data));
+
+        Integer orElse = Stream.of(1,2,3,4,5,6,7,8,9,10).max(Comparator.comparingInt(a -> a)).orElse(1);
+        System.out.println(orElse);
+
+        String s="1,2,3";
+        String[] split = s.split(",");
+        List<String> asList = Arrays.asList(split);
+        List<Integer> collect = asList.stream().map(a->Integer.parseInt(a)).takeWhile(i->i<3).collect(Collectors.toList()
+        );
+        System.out.println(collect);
+
+        int a=1234567;
+        int pall=0;
+
+        do {
+            int rem=a%10;
+            pall=pall*10+rem;
+            a=a/10;
+        }while(a>0);
+        System.out.println(pall);
+
+        List<String> asList2 = Arrays.asList("a","a","s");
+        List<Student> collect2 = asList2.stream().map(aa->new Student()).collect(Collectors.toList());
+        Map<String, Student> collect3 = collect2.stream().collect(Collectors.toSet()).stream().collect(Collectors.toMap(Student::getName, Function.identity()));
+        System.out.println(collect3);
+
+    }
+
+}
+
+
+class SimpleHashMapExample {
+
+    public static void main(String[] args) {
+
+        Map<Integer, String> map = new HashMap<>();
+        for (int i = 0; i < 10000; i++) {
+            map.put(i, "Test" + i);
+        }
+        long startTime = System.nanoTime();
+        // Searching 5001 using hasmap
+        map.get(5001);
+        long timeTaken = System.nanoTime() - startTime;
+        System.out.println("Total Time taken Using Map " + timeTaken);
+
+        List<Integer> collect = map.keySet().stream().collect(Collectors.toList());
+        startTime = System.nanoTime();
+        //searching 5001 using list
+        for (Integer i : collect) {
+            if (collect.get(i) == 5001) {
+                timeTaken = System.nanoTime() - startTime;
+                System.out.println("Total Time taken Using List " + timeTaken);
+
+            }
+        }
+
+    }
+
+}
+
+
